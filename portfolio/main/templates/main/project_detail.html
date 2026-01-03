@@ -1,0 +1,299 @@
+<!-- templates/main/project_detail.html - UPDATED section for markdown rendering -->
+{% extends 'main/base.html' %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+<style>
+    .swiper {
+        width: 100%;
+        height: 400px;
+    }
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .swiper-button-next, .swiper-button-prev {
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 20px;
+    }
+    /* Markdown styles */
+    .markdown-content h1 { font-size: 1.875rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 1rem; }
+    .markdown-content h2 { font-size: 1.5rem; font-weight: bold; margin-top: 1.25rem; margin-bottom: 0.75rem; }
+    .markdown-content h3 { font-size: 1.25rem; font-weight: bold; margin-top: 1rem; margin-bottom: 0.5rem; }
+    .markdown-content p { margin-bottom: 1rem; line-height: 1.6; }
+    .markdown-content ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
+    .markdown-content ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 1rem; }
+    .markdown-content li { margin-bottom: 0.25rem; }
+    .markdown-content code { background-color: #f3f4f6; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-family: monospace; }
+    .markdown-content pre { background-color: #1f2937; color: #f9fafb; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; overflow-x: auto; }
+    .markdown-content pre code { background-color: transparent; padding: 0; }
+    .markdown-content blockquote { border-left: 4px solid #3b82f6; padding-left: 1rem; margin-left: 0; margin-bottom: 1rem; font-style: italic; }
+    .markdown-content a { color: #3b82f6; text-decoration: underline; }
+    .markdown-content a:hover { color: #2563eb; }
+    .markdown-content table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+    .markdown-content th, .markdown-content td { border: 1px solid #e5e7eb; padding: 0.5rem; text-align: left; }
+    .markdown-content th { background-color: #f9fafb; font-weight: bold; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <!-- Back button -->
+    <a href="{% url 'project_list' %}" class="inline-flex items-center text-primary-600 hover:text-primary-800 mb-6">
+        <i class="fas fa-arrow-left mr-2"></i>
+        Retour aux projets
+    </a>
+
+    <!-- Project Header -->
+    <div class="mb-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900">{{ project.title }}</h1>
+            <div class="flex items-center gap-4">
+                {% if project.featured %}
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold">
+                    <i class="fas fa-star mr-1"></i>En vedette
+                </span>
+                {% endif %}
+                <span class="text-gray-500">{{ project.created_at|date:"d F Y" }}</span>
+            </div>
+        </div>
+        
+        <div class="flex flex-wrap gap-4 mb-6">
+            <span class="px-4 py-2 bg-primary-100 text-primary-800 rounded-lg">
+                {{ project.project_type.name }}
+            </span>
+            <span class="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg">
+                {{ project.category.name }}
+            </span>
+        </div>
+        
+        <p class="text-xl text-gray-600">{{ project.short_description }}</p>
+    </div>
+
+    <!-- Image Carousel -->
+    {% if project.images.all %}
+    <div class="mb-12 bg-gray-900 rounded-xl overflow-hidden">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                {% for image in project.images.all %}
+                <div class="swiper-slide">
+                    <img src="{{ image.image.url }}" alt="{{ image.alt_text }}">
+                </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Left Column: Content -->
+        <div class="lg:col-span-2">
+            <!-- Project Description -->
+            <div class="bg-white p-6 rounded-xl shadow-sm mb-8">
+                <h2 class="text-2xl font-bold mb-4">Description du projet</h2>
+                <div class="markdown-content">
+                    {{ project.full_description_html|safe }}
+                </div>
+            </div>
+
+            <!-- Video Embed -->
+            {% if project.video_url %}
+            <div class="bg-white p-6 rounded-xl shadow-sm mb-8">
+                <h2 class="text-2xl font-bold mb-4">Vidéo du projet</h2>
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe src="{{ project.video_url }}" 
+                            class="w-full h-64 md:h-96 rounded-lg" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Right Column: Sidebar -->
+        <div class="space-y-6">
+            <!-- Tech Stack -->
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-xl font-bold mb-4">Technologies utilisées</h3>
+                <div class="space-y-3">
+                    {% for tech in project.tech_stack.all %}
+                    <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                        {% if tech.icon %}
+                        <img src="{{ tech.icon.url }}" alt="{{ tech.name }}" class="w-8 h-8 object-contain">
+                        {% endif %}
+                        <span class="font-medium">{{ tech.name }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-xl font-bold mb-4">Liens du projet</h3>
+                <div class="space-y-3">
+                    <a href="{{ project.github_url }}" 
+                       target="_blank" 
+                       class="track-click-btn flex items-center justify-center gap-2 bg-gray-800 text-white py-3 rounded-lg font-semibold hover:bg-gray-900 transition-colors"
+                       data-type="github"
+                       data-project-slug="{{ project.slug }}">
+                        <i class="fab fa-github"></i>
+                        Code source GitHub
+                    </a>
+                    
+                    {% if project.live_demo_url %}
+                    <a href="{{ project.live_demo_url }}" 
+                       target="_blank" 
+                       class="track-click-btn flex items-center justify-center gap-2 bg-primary-600 text-white py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+                       data-type="demo"
+                       data-project-slug="{{ project.slug }}">
+                        <i class="fas fa-external-link-alt"></i>
+                        Voir la démo
+                    </a>
+                    {% endif %}
+                    
+                    {% if project.documentation_pdf %}
+                    <a href="{{ project.documentation_pdf.url }}" 
+                       target="_blank" 
+                       class="track-click-btn flex items-center justify-center gap-2 bg-gray-100 text-gray-800 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
+                       data-type="doc"
+                       data-project-slug="{{ project.slug }}">
+                        <i class="fas fa-file-pdf"></i>
+                        Documentation PDF
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Metrics -->
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-xl font-bold mb-4">Statistiques</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="text-center p-3 bg-blue-50 rounded-lg">
+                        <div class="text-2xl font-bold text-primary-700">
+                            {% with metric=project.metrics.first %}
+                            {{ metric.view_count|default:0 }}
+                            {% endwith %}
+                        </div>
+                        <div class="text-sm text-gray-600">Vues</div>
+                    </div>
+                    <div class="text-center p-3 bg-green-50 rounded-lg">
+                        <div class="text-2xl font-bold text-green-700">
+                            {% with metric=project.metrics.first %}
+                            {{ metric.github_click_count|default:0 }}
+                            {% endwith %}
+                        </div>
+                        <div class="text-sm text-gray-600">Clics GitHub</div>
+                    </div>
+                    <div class="text-center p-3 bg-purple-50 rounded-lg">
+                        <div class="text-2xl font-bold text-purple-700">
+                            {% with metric=project.metrics.first %}
+                            {{ metric.demo_click_count|default:0 }}
+                            {% endwith %}
+                        </div>
+                        <div class="text-sm text-gray-600">Clics démo</div>
+                    </div>
+                    <div class="text-center p-3 bg-yellow-50 rounded-lg">
+                        <div class="text-2xl font-bold text-yellow-700">
+                            {% with metric=project.metrics.first %}
+                            {{ metric.doc_click_count|default:0 }}
+                            {% endwith %}
+                        </div>
+                        <div class="text-sm text-gray-600">Clics docs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Projects -->
+    {% if related_projects %}
+    <div class="mt-16">
+        <h2 class="text-2xl font-bold mb-8">Projets similaires</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% for related in related_projects %}
+            <a href="{% url 'project_detail' related.slug %}" class="group">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                    {% if related.thumbnail %}
+                    <img src="{{ related.thumbnail.url }}" alt="{{ related.title }}" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+                    {% endif %}
+                    <div class="p-4">
+                        <h4 class="font-bold mb-2 group-hover:text-primary-600 transition-colors">{{ related.title }}</h4>
+                        <p class="text-sm text-gray-600">{{ related.short_description|truncatechars:80 }}</p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script>
+    // Initialize Swiper
+    const swiper = new Swiper('.swiper', {
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 5000,
+        },
+    });
+
+    // Track link clicks
+    document.querySelectorAll('.track-click-btn').forEach(button => {
+        button.addEventListener('click', async function(e) {
+            const type = this.dataset.type;
+            const projectSlug = this.dataset.projectSlug;
+            
+            // Open link in new tab
+            if (this.href) {
+                e.preventDefault();
+                window.open(this.href, '_blank');
+            }
+            
+            // Track the click
+            try {
+                const response = await fetch('{% url "track_click" %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({
+                        project_slug: projectSlug,
+                        type: type
+                    })
+                });
+                
+                if (!response.ok) {
+                    console.error('Failed to track click');
+                }
+            } catch (error) {
+                console.error('Error tracking click:', error);
+            }
+        });
+    });
+</script>
+{% endblock %}

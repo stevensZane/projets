@@ -1,0 +1,5 @@
+Django==4.2.0
+django-markdownfield==2.0.0
+Pillow==9.5.0
+gunicorn==20.1.0
+whitenoise==6.4.0

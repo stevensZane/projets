@@ -1,0 +1,111 @@
+<!-- templates/main/home.html -->
+{% extends 'main/base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="py-16 md:py-24 bg-gradient-to-r from-primary-50 to-blue-50">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            Etudiant Big Data
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            curieux et en apprentissage constant. J’aime explorer les données pour comprendre les 
+            problèmes et construire des solutions data-driven simples, utiles et cohérentes. <br> 
+            <em>Alias en ligne : Stevens Zane</em>
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'project_list' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors">
+                Voir mes projets
+            </a>
+            <a href="{% url 'contact' %}" class="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-colors">
+                Me contacter
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Projets en vedette</h2>
+        {% if featured_projects %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for project in featured_projects %}
+            <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                {% if project.thumbnail %}
+                <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" class="w-full h-48 object-cover">
+                {% endif %}
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-sm font-semibold text-primary-600">{{ project.project_type.name }}</span>
+                        <span class="text-sm text-gray-500">{{ project.created_at|date:"M Y" }}</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">{{ project.title }}</h3>
+                    <p class="text-gray-600 mb-4">{{ project.short_description }}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {% for tech in project.tech_stack.all|slice:":3" %}
+                        <span class="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full">
+                            {{ tech.name }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    <a href="{% url 'project_detail' project.slug %}" class="text-primary-600 font-semibold hover:text-primary-700 flex items-center">
+                        Voir le projet
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-12">
+            <a href="{% url 'project_list' %}" class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700">
+                Voir tous les projets
+                <i class="fas fa-chevron-right ml-2"></i>
+            </a>
+        </div>
+        {% else %}
+        <p class="text-center text-gray-500">Aucun projet en vedette pour le moment.</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Recent Projects -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Projets récents</h2>
+        {% if recent_projects %}
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {% for project in recent_projects %}
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold mb-3">{{ project.title }}</h3>
+                <p class="text-gray-600 mb-4">{{ project.short_description|truncatechars:150 }}</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-sm text-primary-600 font-semibold">{{ project.category.name }}</span>
+                    <a href="{% url 'project_detail' project.slug %}" class="text-sm text-gray-500 hover:text-primary-600">
+                        Lire la suite →
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Skills Overview -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Compétences techniques</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {% for tech in tech_stack %}
+            <div class="flex flex-col items-center p-4 hover:bg-gray-50 rounded-lg transition-colors">
+                {% if tech.icon %}
+                <img src="{{ tech.icon.url }}" alt="{{ tech.name }}" class="w-16 h-16 object-contain mb-3">
+                {% endif %}
+                <span class="text-sm font-medium text-gray-700">{{ tech.name }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,62 @@
+# README.md
+
+# Portfolio Django
+
+## Structure du projet
+portfolio/
+├── main/
+│   ├── migrations/
+│   ├── templates/main/
+│   │   ├── home.html
+│   │   ├── project_list.html
+│   │   ├── project_detail.html
+│   │   ├── about.html
+│   │   ├── contact.html
+│   │   └── contact_success.html
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── urls.py
+│   └── views.py
+├── static/
+│   └── js/
+│       └── metrics.js
+├── media/
+├── templates/
+│   └── base.html
+├── requirements.txt
+├── manage.py
+└── README.md
+
+## Fonctionnalités
+
+### Frontend
+- Site responsive (mobile-first)
+- Filtrage et recherche en temps réel
+- Carousel d'images Swiper.js
+- Tracking d'analytics
+- Formulaires de contact
+- Rendu Markdown
+
+### Backend
+- Modèles Django optimisés
+- Admin Django personnalisé
+- Gestion des médias (images, PDF)
+- Système de métriques
+- Email automatique sur contact
+
+### Admin
+- Interface d'administration complète
+- Inline editing pour images
+- Prévisualisation des médias
+- Toggle "Featured"
+- Statistiques visibles
+
+## Installation
+
+### 1. Cloner le projet
+```bash
+git clone <repository-url>
+cd portfolio

@@ -1,0 +1,106 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ page_title|default:"Portfolio" }}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="{% url 'home' %}" class="text-2xl font-bold text-primary-700 hover:text-primary-800 transition-colors">
+                    Portfolio
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="{% url 'home' %}" class="hover:text-primary-600 transition-colors">Accueil</a>
+                    <a href="{% url 'project_list' %}" class="hover:text-primary-600 transition-colors">Projets</a>
+                    <a href="{% url 'about' %}" class="hover:text-primary-600 transition-colors">À propos</a>
+                    <a href="{% url 'contact' %}" class="hover:text-primary-600 transition-colors">Contact</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-800">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-3 space-y-2">
+                <a href="{% url 'home' %}" class="block py-2 hover:text-primary-600 transition-colors">Accueil</a>
+                <a href="{% url 'project_list' %}" class="block py-2 hover:text-primary-600 transition-colors">Projets</a>
+                <a href="{% url 'about' %}" class="block py-2 hover:text-primary-600 transition-colors">À propos</a>
+                <a href="{% url 'contact' %}" class="block py-2 hover:text-primary-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">Portfolio</h3>
+                    <p class="text-gray-400">Stevens Zane • 2026</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://github.com/stevensZane/" target="_blank" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/lasie-havila-bazoungoula-15a2962b6/" target="_blank" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="{% url 'contact' %}" class="text-gray-300 hover:text-white transition-colors">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+                <p>&copy; 2026 Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile menu script -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
