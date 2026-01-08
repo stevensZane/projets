@@ -1,0 +1,91 @@
+🏡 Application Web de Scraping et de Visualisation de Données Immobilières
+
+Cette application web a été conçue pour automatiser la collecte, le traitement et la visualisation de données immobilières, en particulier les terrains et les villas, à partir de plateformes en ligne. L’objectif principal est de transformer des données brutes, souvent dispersées et non structurées, en informations exploitables pour l’analyse et la prise de décision.
+
+Développée avec Streamlit, l’application offre une interface simple et interactive permettant à l’utilisateur de lancer des opérations de scraping sans connaissances techniques avancées, puis d’explorer visuellement les données collectées.
+
+🔍 Collecte et Scraping des Données
+
+L’application intègre un module de web scraping automatisé capable d’extraire des informations clés telles que :
+
+le type de bien (terrain ou villa),
+
+le prix,
+
+la localisation,
+
+la surface,
+
+les caractéristiques principales,
+
+la date de publication.
+
+Les données récupérées sont nettoyées et structurées afin d’éliminer les valeurs manquantes, les doublons et les incohérences, garantissant ainsi une meilleure qualité des données pour les étapes d’analyse.
+
+🧹 Traitement et Préparation des Données
+
+Une phase de préprocessing est appliquée aux données scrapées :
+
+normalisation des formats (prix, surfaces, localisations),
+
+gestion des valeurs manquantes,
+
+transformation des variables pour faciliter l’analyse,
+
+structuration des données sous forme de tables exploitables.
+
+Cette étape est essentielle pour assurer la fiabilité des visualisations et des analyses générées par l’application.
+
+📊 Visualisation et Analyse Interactive
+
+L’application propose plusieurs visualisations interactives permettant d’explorer les données immobilières :
+
+répartition des prix selon le type de bien,
+
+comparaison des surfaces,
+
+analyse géographique des biens,
+
+statistiques descriptives et indicateurs clés.
+
+Grâce à Streamlit, l’utilisateur peut filtrer dynamiquement les données (par type de bien, localisation, intervalle de prix, etc.) et observer instantanément l’impact de ces filtres sur les graphiques et les tableaux.
+
+🌐 Interface Web et Expérience Utilisateur
+
+L’interface web est conçue pour être :
+
+intuitive et responsive,
+
+orientée exploration des données,
+
+adaptée aussi bien à un usage académique que professionnel.
+
+L’application démontre comment des technologies data peuvent être combinées à une interface web légère pour créer un outil d’analyse accessible et performant.
+
+🧠 Objectifs et Apports du Projet
+
+Ce projet met en valeur :
+
+la maîtrise du web scraping,
+
+la préparation et l’analyse de données réelles,
+
+la création de dashboards interactifs,
+
+l’utilisation de Streamlit comme framework de data apps,
+
+une approche end-to-end, de la collecte à la visualisation.
+
+Il illustre l’application concrète des concepts de Big Data et Data Analysis dans un contexte immobilier réel.
+
+🛠️ Technologies utilisées
+
+Python
+
+Streamlit
+
+Pandas / NumPy
+
+Bibliothèques de scraping (BeautifulSoup / Requests / Selenium)
+
+Matplotlib / Seaborn / Plotly
