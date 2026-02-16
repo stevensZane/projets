@@ -1,0 +1,13 @@
+encodages.pickle
+yolov8n-face.pt
+passages.csv
+
+*.pickle
+
+__pycache__/
+
+.venv/
+
+.env
+
+*.pyc
