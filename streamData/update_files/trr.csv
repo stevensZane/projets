@@ -1,0 +1,73 @@
+type annonce,nombre pieces,prix,adresse,image lien
+Vente,5,250000000,"Ouest Foire, Dakar, Sénégal",https://images.coinafrique.com/thumb_5174933_uploaded_image1_1738935517.jpg
+Vente,8,18000000,"Mbour, Sénégal",https://images.coinafrique.com/thumb_5170215_uploaded_image1_1738700979.jpg
+Vente,10,65000000,"Mbour, Sénégal",https://images.coinafrique.com/thumb_5156812_uploaded_image1_1738058864.jpg
+Vente,20,99000000,"Toubab Dialao, Sénégal",https://images.coinafrique.com/thumb_5159005_uploaded_image1_1738154903.jpg
+Vente,10,95000000,"Mbour, Sénégal",https://images.coinafrique.com/thumb_5153155_uploaded_image1_1737836922.jpg
+Location,5,900000,"Sipres, Dakar, Sénégal",https://images.coinafrique.com/thumb_5187005_uploaded_image1_1739622672.jpg
+Location,9,1200000,Villas,https://images.coinafrique.com/thumb_5192982_uploaded_image1_1739964540.jpg
+Location,8,3000000,Villas,https://images.coinafrique.com/thumb_5192960_uploaded_image1_1739963956.jpg
+Vente,5,300000000,"Yoff, Dakar, Sénégal",https://images.coinafrique.com/thumb_5189287_uploaded_image1_1739790072.jpg
+Location,6,1000000,Villas,https://images.coinafrique.com/thumb_5194728_uploaded_image1_1740048794.jpg
+Vente,5,190,"Sicap Liberté, Dakar, Sénégal",https://images.coinafrique.com/thumb_5189231_uploaded_image1_1739788027.jpg
+Vente,5,220,"Sicap Liberté, Dakar, Sénégal",https://images.coinafrique.com/thumb_5189220_uploaded_image1_1739787530.jpg
+Location,9,1700000,"Mamelles, Dakar, Sénégal",https://images.coinafrique.com/thumb_5197959_uploaded_image1_1740219606.jpg
+Vente,8,79000000,"Parcelle Assainies, Dakar, Sénégal",https://images.coinafrique.com/thumb_5187804_uploaded_image1_1739674674.jpg
+Location,7,1500000,"Sicap foire, Dakar, Sénégal",https://images.coinafrique.com/thumb_5161744_uploaded_image1_1738281353.jpg
+Location,5,900000,"Sipres, Dakar, Sénégal",https://images.coinafrique.com/thumb_5159953_uploaded_image1_1738193965.jpg
+Location,3,500000,"Point E, Dakar, Sénégal",https://images.coinafrique.com/thumb_5156253_uploaded_image1_1738018086.jpg
+Location,7,3000000,"Mermoz-Sacré Coeur, Dakar, Sénégal",https://images.coinafrique.com/thumb_5190579_uploaded_image1_1739837944.jpg
+Location,4,1100000,"Saly, Sénégal",https://images.coinafrique.com/thumb_5197447_uploaded_image1_1740183423.jpg
+Location,7,3000000,"Mermoz-Sacré Coeur, Dakar, Sénégal",https://images.coinafrique.com/thumb_5197417_uploaded_image1_1740181258.jpg
+Vente,4,120000000,"Yoff, Dakar, Sénégal",https://images.coinafrique.com/thumb_5164778_uploaded_image1_1738444760.jpg
+Location,5,900000,"Sipres, Dakar, Sénégal",https://images.coinafrique.com/thumb_5195884_uploaded_image1_1740090698.jpg
+Location,7,3000000,"Mermoz-Sacré Coeur, Dakar, Sénégal",https://images.coinafrique.com/thumb_5190422_uploaded_image1_1739828357.jpg
+Vente,5,300000000,"Yoff, Dakar, Sénégal",https://images.coinafrique.com/thumb_5179400_uploaded_image1_1739207149.jpg
+Location,9,1200000,"Ngor, Dakar, Sénégal",https://images.coinafrique.com/thumb_5196970_uploaded_image1_1740158490.jpg
+Location,5,4000000,"Point E, Dakar, Sénégal",https://images.coinafrique.com/thumb_5196842_uploaded_image1_1740153595.jpg
+Location,6,650000,"Ouest Foire, Dakar, Sénégal",https://images.coinafrique.com/thumb_5184382_uploaded_image1_1739460128.jpg
+Location,7,2000000,"Mermoz-Sacré Coeur, Dakar, Sénégal",https://images.coinafrique.com/thumb_5167293_uploaded_image1_1738595898.jpg
+Location,9,800000,"Mbao, Dakar, Sénégal",https://images.coinafrique.com/thumb_5151976_uploaded_image1_1737759053.jpg
+Location,4,350000,Villas,https://images.coinafrique.com/thumb_5176690_uploaded_image1_1739036735.jpg
+Location,6,1600000,Villas,https://images.coinafrique.com/thumb_5196702_uploaded_image1_1740148427.jpg
+Location,7,1200000,"Sacré-Coeur, Dakar, Sénégal",https://images.coinafrique.com/thumb_5169047_uploaded_image2_1738665641.jpeg
+Location,11,2000000,"Dakar, Sénégal",https://images.coinafrique.com/thumb_5191368_uploaded_image1_1739884616.jpg
+Location,6,990000,"Ngor, Dakar, Sénégal",https://images.coinafrique.com/thumb_5166922_uploaded_image1_1738585083.jpg
+Vente,1,300000000,"Point E, Dakar, Sénégal",https://images.coinafrique.com/thumb_5196556_uploaded_image1_1740141692.jpg
+Location,5,1000000,"Yoff, Dakar, Sénégal",https://images.coinafrique.com/thumb_5162330_uploaded_image1_1738323892.jpg
+Vente,6,165000000,"Sicap Liberté, Dakar, Sénégal",https://images.coinafrique.com/thumb_5166835_uploaded_image1_1738581846.jpg
+Location,5,1000000,"Mamelles, Dakar, Sénégal",https://images.coinafrique.com/thumb_5156819_uploaded_image1_1738059178.jpg
+Vente,6,250000000,"Diamalaye 1, Dakar, Sénégal",https://images.coinafrique.com/thumb_5152068_uploaded_image1_1737767573.jpg
+Location,6,1800000,"Mermoz-Sacré Coeur, Dakar, Sénégal",https://images.coinafrique.com/thumb_5181606_uploaded_image1_1739314084.jpg
+Vente,5,330000000,"Sipres, Dakar, Sénégal",https://images.coinafrique.com/thumb_5166100_uploaded_image1_1738535125.jpg
+Vente,8,90000000,"Lac rose, Sénégal",https://images.coinafrique.com/thumb_5195878_uploaded_image1_1740090426.jpg
+Vente,150,75000000,"Parcelle Assainies, Dakar, Sénégal",https://images.coinafrique.com/thumb_5195784_uploaded_image1_1740086296.jpg
+Vente,6,150000000,"Sicap Liberté, Dakar, Sénégal",https://images.coinafrique.com/thumb_5151732_uploaded_image1_1737744063.jpg
+Vente,10,250000000,"Mbour, Sénégal",https://images.coinafrique.com/thumb_5195624_uploaded_image1_1740078915.jpg
+Location,4,600000,"Mbour, Sénégal",https://images.coinafrique.com/thumb_5195621_uploaded_image1_1740078754.jpg
+Location,14,1500000,"Sacré-Coeur, Dakar, Sénégal",https://images.coinafrique.com/thumb_5195312_uploaded_image1_1740068058.jpg
+Vente,5,259000000,"Sicap Liberté, Dakar, Sénégal",https://images.coinafrique.com/thumb_5195284_uploaded_image1_1740066719.jpg
+Location,3,375000,"Mbour, Sénégal",https://images.coinafrique.com/thumb_5195272_uploaded_image1_1740066494.jpg
+Vente,5,135000000,"HLM, Dakar, Sénégal",https://images.coinafrique.com/thumb_5194960_uploaded_image1_1740055220.jpg
+Vente,8,130000000,"Mbour, Sénégal",https://images.coinafrique.com/thumb_5194923_uploaded_image1_1740054261.jpg
+Location,5,500000,"Ouakam, Dakar, Sénégal",https://images.coinafrique.com/thumb_5194895_uploaded_image1_1740053632.jpg
+Location,6,750000,"Mamelles, Dakar, Sénégal",https://images.coinafrique.com/thumb_5194764_uploaded_image1_1740050158.jpg
+Location,10,3000000,"Ngor, Dakar, Sénégal",https://images.coinafrique.com/thumb_5179772_uploaded_image1_1739222303.jpg
+Vente,5,450000000,"Almadies, Dakar, Sénégal",https://images.coinafrique.com/thumb_5194097_uploaded_image1_1740004942.jpg
+Location,9,1500000,"Sicap foire, Dakar, Sénégal",https://images.coinafrique.com/thumb_5150235_uploaded_image1_1737665430.jpg
+Vente,7,160000000,"Dakar, Sénégal",https://images.coinafrique.com/thumb_5193721_uploaded_image1_1739989208.jpg
+Location,4,250000,"Parcelle Assainies, Dakar, Sénégal",https://images.coinafrique.com/thumb_5193464_uploaded_image1_1739981886.jpg
+Vente,5,40000000,"Mbour, Sénégal",https://images.coinafrique.com/thumb_5188400_uploaded_image1_1739722502.jpg
+Vente,3,11000000,"Mbour, Sénégal",https://images.coinafrique.com/thumb_5188396_uploaded_image1_1739722175.jpg
+Vente,5,50000000,"Fatick, Sénégal",https://images.coinafrique.com/thumb_5167947_uploaded_image1_1738616626.jpg
+Vente,6,170000000,"Saly, Sénégal",https://images.coinafrique.com/thumb_5188375_uploaded_image1_1739721159.jpg
+Location,7,2000000,"Mamelles, Dakar, Sénégal",https://images.coinafrique.com/thumb_5184268_uploaded_image1_1739455865.jpg
+Vente,15,200000000,"Saly, Sénégal",https://images.coinafrique.com/thumb_5144168_uploaded_image1_1737393431.jpg
+Location,10,1500000,"Yoff, Dakar, Sénégal",https://images.coinafrique.com/thumb_5149288_uploaded_image1_1737634014.jpg
+Location,4,500000,"Biscuiterie, Dakar, Sénégal",https://images.coinafrique.com/thumb_5192577_uploaded_image1_1739949022.jpg
+Vente,8,350000000,"Sicap Liberté, Dakar, Sénégal",https://images.coinafrique.com/thumb_5148341_uploaded_image1_1737579149.jpg
+Vente,5,77000000,"Rufisque, Sénégal",https://images.coinafrique.com/thumb_5192212_uploaded_image1_1739913198.jpg
+Vente,3,63000000,"Mboro, Sénégal",https://images.coinafrique.com/thumb_5189868_uploaded_image1_1739807005.jpg
+Location,8,3000000,"Yoff, Dakar, Sénégal",https://images.coinafrique.com/thumb_5145098_uploaded_image1_1737449642.jpg
+Location,6,3000000,"Mermoz-Sacré Coeur, Dakar, Sénégal",https://images.coinafrique.com/thumb_5145090_uploaded_image1_1737449261.jpg
+Location,4,750000,"Mamelles, Dakar, Sénégal",https://images.coinafrique.com/thumb_5144729_uploaded_image1_1737418744.jpg
