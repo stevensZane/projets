@@ -1,0 +1,2429 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/18/2026 3:54:15 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-6AV936C"
+  DTS:CreatorName="DESKTOP-6AV936C\DELL 5420"
+  DTS:DTSID="{4191F3C0-FC5B-4CBE-8B26-FB058E8DE0D7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="Chargement_dimension"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{DCFE8016-2C7D-42F1-984B-18C5AD92C743}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.MacroBus_Source.sa 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8E275714-300F-4C54-82B4-60886DD27476}"
+      DTS:ObjectName="LocalHost.MacroBus_Source.sa 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=MacroBus_Source;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-Chargement_dimension-{8E275714-300F-4C54-82B4-60886DD27476}LocalHost.MacroBus_Source.sa 1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADLBVMbPHrkKV5fe6Xj0HOAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB7FooKKCmlxVK17iadO3Hf1fT3y0LSwr4i3ghN7BIMpgAAAAAOgAAAAAIAACAAAABBYJw7WzuQoqCKb5CpgOdXK65ddoqi5asu0B8CEfbjbjAAAADFgYguTEOz1hJXFlD0o+fCfhItb4zgud1Lql+XmDtTG+l/NH/Uslwn4MUGPUe4qGVAAAAAo/ddmybXYhj4w+GZwWANuZvXz7hBeT0h/njSX+faEHgpf8xGjnQNL+0Mh4Erfuu7WmQw3D57+WysEH384MRvqg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Chargement dimension commercial"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{69D04EBD-74A0-4144-B709-9ECC7545F3BE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Chargement dimension commercial"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Chargement dimension commercial\Colonne dérivée"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="Colonne dérivée"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Chargement dimension commercial\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Chargement dimension commercial\Colonne dérivée.Inputs[Entrée de colonne dérivée].Columns[Nom]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nom"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Nom]" />
+                    <inputColumn
+                      refId="Package\Chargement dimension commercial\Colonne dérivée.Inputs[Entrée de colonne dérivée].Columns[Prenom]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Prenom"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Prenom]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Chargement dimension commercial\Colonne dérivée.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\Chargement dimension commercial\Colonne dérivée.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Nom complet]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Chargement dimension commercial\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Nom complet]"
+                      name="Nom complet"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">(DT_WSTR,100)(#{Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Prenom]} + " " + #{Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Nom]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,100)(Prenom + " " + Nom)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Chargement dimension commercial\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\Chargement dimension commercial\Colonne dérivée.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension commercial\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension commercial\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Chargement dimension commercial\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Dim_Commercial]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Chargement dimension commercial\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{B89D71A8-26F3-4BA0-9C9A-EB11B547F620}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MacroBus_DW.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Territoire]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Territoire"
+                      externalMetadataColumnId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Territoire]"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Territoire]" />
+                    <inputColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Filiale]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Filiale"
+                      externalMetadataColumnId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Filiale]"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Filiale]" />
+                    <inputColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[ID_Employe]"
+                      cachedDataType="i4"
+                      cachedName="ID_Employe"
+                      externalMetadataColumnId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ID_Source_Employe]"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Employe]" />
+                    <inputColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Nom complet]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Nom complet"
+                      externalMetadataColumnId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Nom_Complet]"
+                      lineageId="Package\Chargement dimension commercial\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Nom complet]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Cle_Commercial]"
+                      dataType="i4"
+                      name="Cle_Commercial" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ID_Source_Employe]"
+                      dataType="i4"
+                      name="ID_Source_Employe" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Nom_Complet]"
+                      dataType="wstr"
+                      length="100"
+                      name="Nom_Complet" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Territoire]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Territoire" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Filiale]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Filiale" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Chargement dimension commercial\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension commercial\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension commercial\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Chargement dimension commercial\Source OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Employes]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Chargement dimension commercial\Source OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.MacroBus_Source.sa 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.MacroBus_Source.sa 1]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Employe]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ID_Employe]"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Employe]"
+                      name="ID_Employe"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Nom]"
+                      length="50"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Nom]"
+                      name="Nom"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Prenom]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Prenom]"
+                      length="50"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Prenom]"
+                      name="Prenom"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Territoire]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Territoire]"
+                      length="50"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Territoire]"
+                      name="Territoire"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Filiale]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Filiale]"
+                      length="50"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Filiale]"
+                      name="Filiale"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ID_Employe]"
+                      dataType="i4"
+                      name="ID_Employe" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nom" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Prenom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Prenom" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Territoire]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Territoire" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Filiale]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Filiale" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ID_Employe]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ID_Employe]"
+                      name="ID_Employe" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Nom]"
+                      name="Nom" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Prenom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Prenom]"
+                      name="Prenom" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Territoire]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Territoire]"
+                      name="Territoire" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Filiale]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Filiale]"
+                      name="Filiale" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Chargement dimension commercial.Paths[Sortie de colonne dérivée]"
+              endId="Package\Chargement dimension commercial\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de colonne dérivée"
+              startId="Package\Chargement dimension commercial\Colonne dérivée.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\Chargement dimension commercial.Paths[Sortie de source OLE DB]"
+              endId="Package\Chargement dimension commercial\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
+              name="Sortie de source OLE DB"
+              startId="Package\Chargement dimension commercial\Source OLE DB.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Chargement dimension produit"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{E8C8CCBA-CC15-4ECA-B5C9-94B7E2058B49}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Chargement dimension produit"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Chargement dimension produit\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Dim_Produit]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Chargement dimension produit\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{B89D71A8-26F3-4BA0-9C9A-EB11B547F620}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MacroBus_DW.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[NomProduit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="NomProduit"
+                      externalMetadataColumnId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Nom_Produit]"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomProduit]" />
+                    <inputColumn
+                      refId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Categorie]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Categorie"
+                      externalMetadataColumnId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Categorie_Produit]"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Categorie]" />
+                    <inputColumn
+                      refId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[ID_Produit]"
+                      cachedDataType="i4"
+                      cachedName="ID_Produit"
+                      externalMetadataColumnId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ID_Source_Produit]"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Produit]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Cle_Produit]"
+                      dataType="i4"
+                      name="Cle_Produit" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ID_Source_Produit]"
+                      dataType="i4"
+                      name="ID_Source_Produit" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Nom_Produit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Nom_Produit" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Categorie_Produit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Categorie_Produit" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Chargement dimension produit\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension produit\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension produit\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Chargement dimension produit\Source OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Produits]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Chargement dimension produit\Source OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.MacroBus_Source.sa 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.MacroBus_Source.sa 1]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Produit]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ID_Produit]"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Produit]"
+                      name="ID_Produit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomProduit]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[NomProduit]"
+                      length="100"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomProduit]"
+                      name="NomProduit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Categorie]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Categorie]"
+                      length="50"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Categorie]"
+                      name="Categorie"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PrixUnitaire]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[PrixUnitaire]"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PrixUnitaire]"
+                      name="PrixUnitaire"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ID_Produit]"
+                      dataType="i4"
+                      name="ID_Produit" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[NomProduit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NomProduit" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Categorie]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Categorie" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[PrixUnitaire]"
+                      dataType="numeric"
+                      name="PrixUnitaire"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ID_Produit]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ID_Produit]"
+                      name="ID_Produit" />
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[NomProduit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[NomProduit]"
+                      name="NomProduit" />
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Categorie]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Categorie]"
+                      name="Categorie" />
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[PrixUnitaire]"
+                      dataType="numeric"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[PrixUnitaire]"
+                      name="PrixUnitaire"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Chargement dimension produit.Paths[Sortie de source OLE DB]"
+              endId="Package\Chargement dimension produit\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\Chargement dimension produit\Source OLE DB.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Chargement table faits_ventes"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{3B959F42-E9BB-461F-BEF1-B2D6EB86661B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Chargement table faits_ventes"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Chargement table faits_ventes\Colonne dérivée"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="Colonne dérivée"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Chargement table faits_ventes\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Chargement table faits_ventes\Colonne dérivée.Inputs[Entrée de colonne dérivée].Columns[Quantite]"
+                      cachedDataType="i4"
+                      cachedName="Quantite"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Quantite]" />
+                    <inputColumn
+                      refId="Package\Chargement table faits_ventes\Colonne dérivée.Inputs[Entrée de colonne dérivée].Columns[PrixVente]"
+                      cachedDataType="numeric"
+                      cachedName="PrixVente"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PrixVente]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Chargement table faits_ventes\Colonne dérivée.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\Chargement table faits_ventes\Colonne dérivée.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Montant_Total_Calculé]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Chargement table faits_ventes\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Montant_Total_Calculé]"
+                      name="Montant_Total_Calculé"
+                      precision="29"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">#{Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Quantite]} * #{Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PrixVente]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Quantite * PrixVente</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Chargement table faits_ventes\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\Chargement table faits_ventes\Colonne dérivée.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Chargement table faits_ventes\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Fait_Ventes]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Chargement table faits_ventes\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="{B89D71A8-26F3-4BA0-9C9A-EB11B547F620}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MacroBus_DW.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Quantite]"
+                      cachedDataType="i4"
+                      cachedName="Quantite"
+                      externalMetadataColumnId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Quantite]"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Quantite]" />
+                    <inputColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Cle_Commercial]"
+                      cachedDataType="i4"
+                      cachedName="Cle_Commercial"
+                      externalMetadataColumnId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Cle_Commercial]"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie de recherche avec correspondance].Columns[Cle_Commercial]" />
+                    <inputColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Cle_Produit]"
+                      cachedDataType="i4"
+                      cachedName="Cle_Produit"
+                      externalMetadataColumnId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Cle_Produit]"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie de recherche avec correspondance].Columns[Cle_Produit]" />
+                    <inputColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Code_Temps]"
+                      cachedDataType="i4"
+                      cachedName="Code_Temps"
+                      externalMetadataColumnId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Code_Temps]"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie de recherche avec correspondance].Columns[Code_Temps]" />
+                    <inputColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Montant_Total_Calculé]"
+                      cachedDataType="numeric"
+                      cachedName="Montant_Total_Calculé"
+                      cachedPrecision="29"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Montant_Total]"
+                      lineageId="Package\Chargement table faits_ventes\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[Montant_Total_Calculé]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ID_Fait]"
+                      dataType="i4"
+                      name="ID_Fait" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Code_Temps]"
+                      dataType="i4"
+                      name="Code_Temps" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Cle_Commercial]"
+                      dataType="i4"
+                      name="Cle_Commercial" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Cle_Produit]"
+                      dataType="i4"
+                      name="Cle_Produit" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Quantite]"
+                      dataType="i4"
+                      name="Quantite" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Montant_Total]"
+                      dataType="numeric"
+                      name="Montant_Total"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Chargement table faits_ventes\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Chargement table faits_ventes\Recherche 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Recherche 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Commercial]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Commercial]) [refTable]
+where [refTable].[ID_Source_Employe] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Cle_Commercial" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ID_Source_Employe" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nom_Complet" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Territoire" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Filiale" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Employe]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Chargement table faits_ventes\Recherche 1.Connections[OleDbConnection]"
+                  connectionManagerID="{B89D71A8-26F3-4BA0-9C9A-EB11B547F620}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MacroBus_DW.sa]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Chargement table faits_ventes\Recherche 1.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 1.Inputs[Entrée de recherche].Columns[ID_Employe]"
+                      cachedDataType="i4"
+                      cachedName="ID_Employe"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Employe]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">ID_Source_Employe</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Chargement table faits_ventes\Recherche 1.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie de recherche avec correspondance].Columns[Cle_Commercial]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie de recherche avec correspondance].Columns[Cle_Commercial]"
+                      name="Cle_Commercial"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">Cle_Commercial</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Chargement table faits_ventes\Recherche 1.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Chargement table faits_ventes\Recherche 1.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Chargement table faits_ventes\Recherche 2"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Recherche 2"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Produit]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Produit]) [refTable]
+where [refTable].[ID_Source_Produit] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Cle_Produit" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ID_Source_Produit" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nom_Produit" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Categorie_Produit" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Produit]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Chargement table faits_ventes\Recherche 2.Connections[OleDbConnection]"
+                  connectionManagerID="{B89D71A8-26F3-4BA0-9C9A-EB11B547F620}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MacroBus_DW.sa]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Chargement table faits_ventes\Recherche 2.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 2.Inputs[Entrée de recherche].Columns[ID_Produit]"
+                      cachedDataType="i4"
+                      cachedName="ID_Produit"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Produit]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">ID_Source_Produit</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Chargement table faits_ventes\Recherche 2.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie de recherche avec correspondance].Columns[Cle_Produit]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie de recherche avec correspondance].Columns[Cle_Produit]"
+                      name="Cle_Produit"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">Cle_Produit</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Chargement table faits_ventes\Recherche 2.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Chargement table faits_ventes\Recherche 2.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Chargement table faits_ventes\Recherche 3"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Recherche 3"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Temps]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Temps]) [refTable]
+where [refTable].[Date_Complete] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Code_Temps" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date_Complete" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Annee" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Semestre" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Trimestre" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Mois" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Nom_Mois" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Jour" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DateCommande]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Chargement table faits_ventes\Recherche 3.Connections[OleDbConnection]"
+                  connectionManagerID="{B89D71A8-26F3-4BA0-9C9A-EB11B547F620}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.MacroBus_DW.sa]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Chargement table faits_ventes\Recherche 3.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 3.Inputs[Entrée de recherche].Columns[DateCommande]"
+                      cachedDataType="dbDate"
+                      cachedName="DateCommande"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DateCommande]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">Date_Complete</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Chargement table faits_ventes\Recherche 3.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie de recherche avec correspondance].Columns[Code_Temps]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie de recherche avec correspondance].Columns[Code_Temps]"
+                      name="Code_Temps"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">Code_Temps</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Chargement table faits_ventes\Recherche 3.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Chargement table faits_ventes\Recherche 3.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Chargement table faits_ventes\Source OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    C.ID_Employe, 
+    C.DateCommande, 
+    D.ID_Produit, 
+    D.Quantite, 
+    D.PrixVente
+FROM Commandes C
+JOIN Details_Commandes D ON C.ID_Commande = D.ID_Commande;</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Chargement table faits_ventes\Source OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.MacroBus_Source.sa 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.MacroBus_Source.sa 1]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Employe]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ID_Employe]"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Employe]"
+                      name="ID_Employe"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DateCommande]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[DateCommande]"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DateCommande]"
+                      name="DateCommande"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Produit]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ID_Produit]"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ID_Produit]"
+                      name="ID_Produit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Quantite]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Quantite]"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Quantite]"
+                      name="Quantite"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PrixVente]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[PrixVente]"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PrixVente]"
+                      name="PrixVente"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ID_Employe]"
+                      dataType="i4"
+                      name="ID_Employe" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[DateCommande]"
+                      dataType="dbDate"
+                      name="DateCommande" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ID_Produit]"
+                      dataType="i4"
+                      name="ID_Produit" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Quantite]"
+                      dataType="i4"
+                      name="Quantite" />
+                    <externalMetadataColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[PrixVente]"
+                      dataType="numeric"
+                      name="PrixVente"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ID_Employe]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ID_Employe]"
+                      name="ID_Employe" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[DateCommande]"
+                      dataType="dbDate"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[DateCommande]"
+                      name="DateCommande" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ID_Produit]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ID_Produit]"
+                      name="ID_Produit" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Quantite]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Quantite]"
+                      name="Quantite" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[PrixVente]"
+                      dataType="numeric"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[PrixVente]"
+                      name="PrixVente"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Chargement table faits_ventes.Paths[Sortie de colonne dérivée]"
+              endId="Package\Chargement table faits_ventes\Recherche 1.Inputs[Entrée de recherche]"
+              name="Sortie de colonne dérivée"
+              startId="Package\Chargement table faits_ventes\Colonne dérivée.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\Chargement table faits_ventes.Paths[Sortie de recherche avec correspondance]"
+              endId="Package\Chargement table faits_ventes\Recherche 2.Inputs[Entrée de recherche]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Chargement table faits_ventes\Recherche 1.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Chargement table faits_ventes.Paths[Sortie de recherche avec correspondance1]"
+              endId="Package\Chargement table faits_ventes\Recherche 3.Inputs[Entrée de recherche]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Chargement table faits_ventes\Recherche 2.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Chargement table faits_ventes.Paths[Sortie de recherche avec correspondance2]"
+              endId="Package\Chargement table faits_ventes\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Chargement table faits_ventes\Recherche 3.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Chargement table faits_ventes.Paths[Sortie de source OLE DB]"
+              endId="Package\Chargement table faits_ventes\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
+              name="Sortie de source OLE DB"
+              startId="Package\Chargement table faits_ventes\Source OLE DB.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{44299CCA-45E3-48FA-8121-1FEE285B70A1}"
+      DTS:From="Package\Chargement dimension commercial"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Chargement dimension produit" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{082752EE-F024-4D2C-8CAB-8143341FAEAB}"
+      DTS:From="Package\Chargement dimension produit"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Chargement table faits_ventes" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="245.333333333334,42.6666666666667"
+          Id="Package\Chargement dimension commercial"
+          TopLeft="126.874994328246,101.399995164871" />
+        <NodeLayout
+          Size="225.333333333334,42.6666666666667"
+          Id="Package\Chargement dimension produit"
+          TopLeft="97.4999956414105,224.899989275933" />
+        <NodeLayout
+          Size="222.666666666667,42.6666666666667"
+          Id="Package\Chargement table faits_ventes"
+          TopLeft="202.499990947545,313.949985029698" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="249.541660994913,144.066661831538">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-39.3749986868355,80.8333274443953"
+              Start="0,0"
+              End="-39.3749986868355,73.3333274443953">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.4166637221977" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.4166637221977"
+                    Point2="0,40.4166637221977"
+                    Point3="-4,40.4166637221977" />
+                  <mssgle:LineSegment
+                    End="-35.3749986868355,40.4166637221977" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-35.3749986868355,40.4166637221977"
+                    Point2="-39.3749986868355,40.4166637221977"
+                    Point3="-39.3749986868355,44.4166637221977" />
+                  <mssgle:LineSegment
+                    End="-39.3749986868355,73.3333274443953" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="210.166662308077,267.5666559426">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.666661972801,46.3833290870983"
+              Start="0,0"
+              End="103.666661972801,38.8833290870983">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.1916645435492" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.1916645435492"
+                    Point2="0,23.1916645435492"
+                    Point3="4,23.1916645435492" />
+                  <mssgle:LineSegment
+                    End="99.6666619728012,23.1916645435492" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.6666619728012,23.1916645435492"
+                    Point2="103.666661972801,23.1916645435492"
+                    Point3="103.666661972801,27.1916645435492" />
+                  <mssgle:LineSegment
+                    End="103.666661972801,38.8833290870983" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Chargement dimension commercial">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Chargement dimension commercial\Destination OLE DB"
+          TopLeft="458.124979520217,351.649983232022" />
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Chargement dimension commercial\Source OLE DB"
+          TopLeft="165.624992595986,148.849992902279" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Chargement dimension commercial\Colonne dérivée"
+          TopLeft="227.499989829958,266.49998729229" />
+        <EdgeLayout
+          Id="Package\Chargement dimension commercial.Paths[Sortie de colonne dérivée]"
+          TopLeft="304.833323163291,309.166653958957">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="239.291656356926,42.4833292730651"
+              Start="0,0"
+              End="239.291656356926,34.9833292730651">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.2416646365326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.2416646365326"
+                    Point2="0,21.2416646365326"
+                    Point3="4,21.2416646365326" />
+                  <mssgle:LineSegment
+                    End="235.291656356926,21.2416646365326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="235.291656356926,21.2416646365326"
+                    Point2="239.291656356926,21.2416646365326"
+                    Point3="239.291656356926,25.2416646365326" />
+                  <mssgle:LineSegment
+                    End="239.291656356926,34.9833292730651" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Chargement dimension commercial.Paths[Sortie de source OLE DB]"
+          TopLeft="240.958325929319,191.516659568946">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63.874997233972,74.9833277233443"
+              Start="0,0"
+              End="63.874997233972,67.4833277233443">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4916638616722" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.4916638616722"
+                    Point2="0,37.4916638616722"
+                    Point3="4,37.4916638616722" />
+                  <mssgle:LineSegment
+                    End="59.874997233972,37.4916638616722" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59.874997233972,37.4916638616722"
+                    Point2="63.874997233972,37.4916638616722"
+                    Point3="63.874997233972,41.4916638616722" />
+                  <mssgle:LineSegment
+                    End="63.874997233972,67.4833277233443" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Chargement dimension commercial\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Chargement dimension commercial\Source OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Chargement dimension produit">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Chargement dimension produit\Source OLE DB"
+          TopLeft="168.999994963408,154.99999538064" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Chargement dimension produit\Destination OLE DB"
+          TopLeft="326.999990254641,317.999990522862" />
+        <EdgeLayout
+          Id="Package\Chargement dimension produit.Paths[Sortie de source OLE DB]"
+          TopLeft="244.333328296741,197.666662047307">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="168.6666619579,120.333328475555"
+              Start="0,0"
+              End="168.6666619579,112.833328475555">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.1666642377775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.1666642377775"
+                    Point2="0,60.1666642377775"
+                    Point3="4,60.1666642377775" />
+                  <mssgle:LineSegment
+                    End="164.6666619579,60.1666642377775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="164.6666619579,60.1666642377775"
+                    Point2="168.6666619579,60.1666642377775"
+                    Point3="168.6666619579,64.1666642377775" />
+                  <mssgle:LineSegment
+                    End="168.6666619579,112.833328475555" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Chargement dimension produit\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Chargement dimension produit\Source OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Chargement table faits_ventes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Chargement table faits_ventes\Recherche 2"
+          TopLeft="119.84615027446,234.846146847193" />
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Chargement table faits_ventes\Source OLE DB"
+          TopLeft="212.038455219223,24.5769223444737" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Chargement table faits_ventes\Destination OLE DB"
+          TopLeft="212.88460904016,383.365373190206" />
+        <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Chargement table faits_ventes\Recherche 1"
+          TopLeft="328.019220993496,186.288455986633" />
+        <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Chargement table faits_ventes\Recherche 3"
+          TopLeft="331.705118518227,283.538453088357" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Chargement table faits_ventes\Colonne dérivée"
+          TopLeft="106.673073743972,137.980765118622" />
+        <EdgeLayout
+          Id="Package\Chargement table faits_ventes.Paths[Sortie de source OLE DB]"
+          TopLeft="287.371788552556,67.2435890111404">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-103.365381475251,70.7371761074816"
+              Start="0,0"
+              End="-103.365381475251,63.2371761074816">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.3685880537408" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.3685880537408"
+                    Point2="0,35.3685880537408"
+                    Point3="-4,35.3685880537408" />
+                  <mssgle:LineSegment
+                    End="-99.3653814752512,35.3685880537408" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-99.3653814752512,35.3685880537408"
+                    Point2="-103.365381475251,35.3685880537408"
+                    Point3="-103.365381475251,39.3685880537408" />
+                  <mssgle:LineSegment
+                    End="-103.365381475251,63.2371761074816" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Chargement table faits_ventes.Paths[Sortie de recherche avec correspondance2]"
+          TopLeft="400.371785184894,326.205119755024">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-101.487176144734,57.1602534351822"
+              Start="0,0"
+              End="-101.487176144734,49.6602534351822">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5801267175911" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5801267175911"
+                    Point2="0,28.5801267175911"
+                    Point3="-4,28.5801267175911" />
+                  <mssgle:LineSegment
+                    End="-97.487176144734,28.5801267175911" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-97.487176144734,28.5801267175911"
+                    Point2="-101.487176144734,28.5801267175911"
+                    Point3="-101.487176144734,32.5801267175911" />
+                  <mssgle:LineSegment
+                    End="-101.487176144734,49.6602534351822" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-142.420599791117,33.5801267175911,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Chargement table faits_ventes.Paths[Sortie de recherche avec correspondance1]"
+          TopLeft="257.179483607794,261.957257958304">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.5256349104334,42.9145284633863"
+              Start="0,0"
+              End="67.0256349104334,42.9145284633863">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.4264725525924,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.4264725525924,0"
+                    Point2="31.4264725525924,0"
+                    Point3="31.4264725525924,4" />
+                  <mssgle:LineSegment
+                    End="31.4264725525924,38.9145284633863" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.4264725525924,38.9145284633863"
+                    Point2="31.4264725525924,42.9145284633863"
+                    Point3="35.4264725525924,42.9145284633863" />
+                  <mssgle:LineSegment
+                    End="67.0256349104334,42.9145284633863" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-85.7209297911576,-17.609375,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Chargement table faits_ventes.Paths[Sortie de recherche avec correspondance]"
+          TopLeft="328.019220993496,213.399567097744">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-70.8397373857024,37.0021353050047"
+              Start="0,0"
+              End="-63.3397373857024,37.0021353050047">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-31.4198686928512,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-31.4198686928512,0"
+                    Point2="-35.4198686928512,0"
+                    Point3="-35.4198686928512,4" />
+                  <mssgle:LineSegment
+                    End="-35.4198686928512,33.0021353050047" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-35.4198686928512,33.0021353050047"
+                    Point2="-35.4198686928512,37.0021353050047"
+                    Point3="-39.4198686928512,37.0021353050047" />
+                  <mssgle:LineSegment
+                    End="-63.3397373857024,37.0021353050047" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-152.567271036601,-17.609375,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Chargement table faits_ventes.Paths[Sortie de colonne dérivée]"
+          TopLeft="261.339740410639,159.314098451955">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66.6794805828574,42.5299130902332"
+              Start="0,0"
+              End="59.1794805828574,42.5299130902332">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.561627325026,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.561627325026,0"
+                    Point2="38.561627325026,0"
+                    Point3="38.561627325026,4" />
+                  <mssgle:LineSegment
+                    End="38.561627325026,38.5299130902332" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.561627325026,38.5299130902332"
+                    Point2="38.561627325026,42.5299130902332"
+                    Point3="42.561627325026,42.5299130902332" />
+                  <mssgle:LineSegment
+                    End="59.1794805828574,42.5299130902332" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Chargement table faits_ventes\Recherche 2">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Produit]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Chargement table faits_ventes\Source OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Chargement table faits_ventes\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Chargement table faits_ventes\Recherche 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Commercial]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Chargement table faits_ventes\Recherche 3">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Temps]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

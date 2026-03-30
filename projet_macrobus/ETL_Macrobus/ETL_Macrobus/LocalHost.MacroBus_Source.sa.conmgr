@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.MacroBus_Source.sa"
+  DTS:DTSID="{3DC11E0D-EDCB-40DB-AADD-34D3EC952FAA}"
+  DTS:CreationName="ADO">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=MacroBus_Source;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-ETL_Macrobus-{3DC11E0D-EDCB-40DB-AADD-34D3EC952FAA}LocalHost.MacroBus_Source.sa;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADLBVMbPHrkKV5fe6Xj0HOAAAAAACAAAAAAAQZgAAAAEAACAAAADB5tYFAmLTtIC1kcX3F2A5F7UGzINn8Hoy/jOAFxmWvQAAAAAOgAAAAAIAACAAAACAy1QGF0nzUOAhg7EniwPV5jDYX/NuC+2sKvM7UmB+64AAAAACinR7Ah4IOzPyCJLe/BaCYyUrbdzZizKsJ19aT5Y855+qGigphSWLu5Ntc4UDl/eCS+uHRVZ03YLEcc739SnII7A5McikZPypLHczc37HFYU0kbElNDmh++unJlAqXZlcpIYOzU+cbHiuUnI//trCTFselMgGMbyV2G/o7xXBmUAAAACYhCfFRxRcdVNfAoklA8J+QAmzP6abC5lJcWyjEstR7qzW+lo88S53LSoopLQIfx5/1iiiOi79nC1/espSbVjq</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

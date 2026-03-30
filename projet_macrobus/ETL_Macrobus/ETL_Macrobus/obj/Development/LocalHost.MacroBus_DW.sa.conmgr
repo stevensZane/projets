@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.MacroBus_DW.sa"
+  DTS:DTSID="{B89D71A8-26F3-4BA0-9C9A-EB11B547F620}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=MacroBus_DW;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-ETL_Macrobus-{B89D71A8-26F3-4BA0-9C9A-EB11B547F620}LocalHost.MacroBus_DW.sa;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADLBVMbPHrkKV5fe6Xj0HOAAAAAACAAAAAAAQZgAAAAEAACAAAADIrEbcj4O/5ikGrLF9P5+oNBZXmIpFYjUu91emS9cbGgAAAAAOgAAAAAIAACAAAADnJw4RhDYLPNUe2RTQAosV/2wpI4L31NfuSVVWL9onfoAAAADVD43PvU/IsIyDdKSzhu1HLkoGjeS+bbODdgF44aqnO2n//6Fy2awsAFmr9aByO8UEaqdJEkt7MqHT7DIW+JW44MPiUlSE7mfiBLPscvWU1d1mB0OzitrFU6rRRHH12PNM6K0bAEtGAH/2R1SK/HQS8Nx+Uyo+944yka22Lnc4VUAAAADave8w9Ap+4sNq8XVUqysgI4htpkJQkdUwPEbsSD447Ltr5Sp2S/sfLc19MFfd14bzw3f4gImIlyYYIt6WLIkE</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

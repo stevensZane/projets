@@ -1,0 +1,15 @@
+services:
+  # Le cerveau du Data Warehouse
+  database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: moteur_dw_sql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=DataEng_Pass2026! # Change-le si tu veux, mais garde une majuscule/chiffre
+    ports:
+      - "1433:1433" # Port standard pour SSMS
+    volumes:
+      - mssql_data:/var/opt/mssql # Pour ne pas perdre tes données si tu arrêtes le conteneur
+ 
+volumes:
+  mssql_data:
